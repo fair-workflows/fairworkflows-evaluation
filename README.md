@@ -12,11 +12,13 @@ This user study aims to evaluate the usability of FAIRWorkflows. Users were aske
 * Define your own workflow 
 * Objective: How to define a workflow from published steps
 ## Task :
-* Create a workflow from published steps to execute a task 
-* Objective: Reusing existing steps / commands 
+* Compose a workflow from published steps to perform a task 
+* Objective: Reuse existing steps / commands to compose a workflow
 
-* 3 different Image editing workflows
-* About 10 steps: 
+* The participants will be asked to compose a workflow to accomplish different image-editing tasks.
+* In each task, a target image will be given and participants will create a workflow (involving 3-5 steps) that would produce this image from the input image.  
+* 3 different image editing workflows
+* Using 10 steps: 
    + Draw rectangle
    + Change brightness / contrast
    + Adjust opacity / mode
