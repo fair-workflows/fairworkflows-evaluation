@@ -1,0 +1,31 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pplan: <http://purl.org/net/p-plan#> 
+PREFIX  npx: <http://purl.org/nanopub/x/> 
+PREFIX  dc1: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#> 
+select ?p (count(DISTINCT ?np) AS ?a) where { 
+    VALUES ?p { 
+<http://purl.org/np/RAx__dmVq87NsBKKPkHlGXRWFCkcasVGSj2114lj4CHAQ#fairworkflowprov>
+<http://purl.org/np/RAT9ZTEJeSFsHsdN6HgKors5k3iHlZgH_AG721ulWHT0Y#fairworkflowprov>
+<http://purl.org/np/RAOUpRUixNpYPMK9xse-MMjBob6qLF6nBKyMaulgpe9fk#fairworkflowprov>
+<http://purl.org/np/RAGUgthCu49BXC9aBUFlg_LnuGbyc-rkuDNBcy-fJ3bsw#fairworkflowprov>
+<http://purl.org/np/RApCbC9LWg7KmZVEVwsJ9rYsOUQcHW98YdNPpgf-HGyx8#fairworkflowprov>
+<http://purl.org/np/RA2SXWmtWbwp59nt2qUwtEGrVFuRG8NLna11RalCZHMWM#fairworkflowprov>
+<http://purl.org/np/RAkoQCQb2402Tv9-rELXwuYpOt5Nq5puUrALbXuVU-fDs#fairworkflowprov>
+<http://purl.org/np/RAHwqAF9VvtgP35XFb9qWl5jEsUiLTcruphXx1i7d4ZZw#fairworkflowprov>
+<http://purl.org/np/RAqfkxMEmnajUaSL8pdArhYksm6lA18Nxi-glSVHoyJWo#fairworkflowprov>}
+{
+?np npx:introduces ?p .
+#?p dc1:description ?p_label .
+}
+UNION
+{
+?np npx:introduces ?s .
+?p prov:hasMember  ?s .
+#?p dc1:description ?p_label .
+}
+}
+GROUP BY ?p
+ORDER BY DESC(?a)
+

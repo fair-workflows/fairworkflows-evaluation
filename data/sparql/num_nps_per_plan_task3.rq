@@ -1,0 +1,33 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pplan: <http://purl.org/net/p-plan#> 
+PREFIX  npx: <http://purl.org/nanopub/x/> 
+PREFIX  dc1: <http://purl.org/dc/terms/>
+PREFIX np: <http://purl.org/np>
+select ?p ?p_label (count(DISTINCT ?np) AS ?a) where { 
+    VALUES ?p { 
+<http://purl.org/np/RAPVzWqnGweopmSGFWfRY9lvI5bj-Tt-l-95r9MLF32i4#plan>
+<http://purl.org/np/RAOxqpn2U7NDdCwK5QXRNCbxJDUo7bJlFJ9E6DRtMF0fk#plan>
+<http://purl.org/np/RAlHMbgH_TvYRmkQqBxfwexF7Jjbwhsfs5j7nxDW3BwYw#plan>
+<http://purl.org/np/RArKfjHfbzR8IcWXGI5DtYB_olIuzx9maImUO-gg2j0wM#plan>
+<http://purl.org/np/RAC9t718UZ_w-gadA8DXLC_dA6v6uINdQxuKB8dd-JL4w#plan>
+<http://purl.org/np/RAXezyxHCAsDvaKxaEAo4HzdRZ4ytCeiMUevevdU0_caM#plan>
+<http://purl.org/np/RA1mPAMLKStkiTGP49xiyVvuxHVWoZUz5xtOo3M4pAm68#plan>
+<http://purl.org/np/RASMrUd2mpPl71mdOUXZRye5zxBJg_Gv--R71xwXaEEFA#plan>
+<http://purl.org/np/RA8ni1mvXvKbOfrqJtQB23AWZypXZkJRzfYTZZTFbheIo#plan>
+<http://purl.org/np/RAAgeSeMLCK6LiTMTFe5B_rSj3tVkyV_Pc-tAoRX77bys#plan>
+<http://purl.org/np/RAmwc29Te_fSVY3sekthILzaL6dCkQNtW4iCwWRkzXA5I#plan> }
+{
+?np npx:introduces ?p .
+?p dc1:description ?p_label .
+}
+UNION
+{
+?np npx:introduces ?s .
+?s pplan:isStepOfPlan ?p .
+?p dc1:description ?p_label .
+}
+}
+GROUP BY ?p ?p_label
+ORDER BY DESC(?a)
+
